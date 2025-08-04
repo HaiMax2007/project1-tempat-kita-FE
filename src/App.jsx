@@ -22,7 +22,7 @@ function App() {
     setError({...error, link: null})
     setLinkData(null)
     if (!url.input) {
-      setTitle({...title, errors: 'Please enter a link'})
+      setUrl({...title, errors: 'Please enter a link'})
       return
     }
 
