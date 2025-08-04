@@ -19,6 +19,7 @@ function App() {
   })
 
   const handleLink = () => {
+    setUrl({...title, errors: ''})
     setError({...error, link: null})
     setLinkData(null)
     if (!url.input) {
@@ -37,6 +38,7 @@ function App() {
   }
   
   const handleTitle = () => {
+    setTitle({...title, errors: ''})
     setError({...error, title: null})
     setTitleData(null)
     if (!title.input) {
