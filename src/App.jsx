@@ -91,7 +91,7 @@ function App() {
             </button>
           </div>
           {error.link && <span className='text-red-500'>{error.link}</span>}
-          {link.errors && <span className='text-red-500'>{link.errors}</span>}
+          {url.errors && <span className='text-red-500'>{url.errors}</span>}
           {
             linkData !== null && (
               <div className="flex gap-5 mt-10 p-5 shadow-xl rounded-lg">
