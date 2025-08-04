@@ -19,11 +19,11 @@ function App() {
   })
 
   const handleLink = () => {
-    setUrl({...title, errors: ''})
+    setUrl({...url, errors: ''})
     setError({...error, link: null})
     setLinkData(null)
     if (!url.input) {
-      setUrl({...title, errors: 'Please enter a link'})
+      setUrl({...url, errors: 'Please enter a link'})
       return
     }
 
