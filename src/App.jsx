@@ -32,7 +32,7 @@ function App() {
         Accept: 'application/json',
       }
     })
-      .then(res => setLinkData(res.data))
+      .then(res => setLinkData(res.data.prediction))
       .catch(err => setError({...error, link: err.response.data.error}))
   }
   
@@ -50,7 +50,7 @@ function App() {
         Accept: 'application/json',
       }
     })
-      .then(res => setTitleData(res.data))
+      .then(res => setTitleData(res.data.prediction))
       .catch(err => setError({...error, title: err.response.data.error}))
   }
 
