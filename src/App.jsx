@@ -5,11 +5,11 @@ import { Shield, Sparkles, Link, Search, FileText, CheckCircle, AlertCircle } fr
 function App() {
   const [url, setUrl] = useState({
     input: '',
-    errors: null
+    errors: ''
   })
   const [title, setTitle] = useState({
     input: '',
-    errors: null
+    errors: ''
   })
   const [linkData, setLinkData] = useState(null)
   const [titleData, setTitleData] = useState(null)
@@ -26,14 +26,14 @@ function App() {
       return
     }
 
-    axios.post('https://c20c25df10e5.ngrok-free.app/predict-news-link', {input: url.input}, {
+    axios.post('https://033aa6ae6320.ngrok-free.app/predict-news-link', {input: url.input}, {
       headers: {
         "Content-Type": 'application/json',
         Accept: 'application/json',
       }
     })
       .then(res => setLinkData(res.data.prediction))
-      .catch(err => setError({...error, link: err.response.data.error}))
+      .catch(err => setError({...error, link: err.response.data.detail}))
   }
   
   const handleTitle = () => {
@@ -44,14 +44,14 @@ function App() {
       return
     }
     
-    axios.post('https://c20c25df10e5.ngrok-free.app/predict-news-title', {input: title.input}, {
+    axios.post('https://033aa6ae6320.ngrok-free.app/predict-news-title', {input: title.input}, {
       headers: {
         "Content-Type": 'application/json',
         Accept: 'application/json',
       }
     })
       .then(res => setTitleData(res.data.prediction))
-      .catch(err => setError({...error, title: err.response.data.error}))
+      .catch(err => setError({...error, title: err.response.data.detail}))
   }
 
   return (
@@ -91,6 +91,7 @@ function App() {
             </button>
           </div>
           {error.link && <span className='text-red-500'>{error.link}</span>}
+          {link.errors && <span className='text-red-500'>{link.errors}</span>}
           {
             linkData !== null && (
               <div className="flex gap-5 mt-10 p-5 shadow-xl rounded-lg">
@@ -134,6 +135,7 @@ function App() {
             </button>
           </div>
           {error.title && <span className='text-red-500 text-lg'>{error.title}</span>}
+          {title.errors && <span className='text-red-500'>{title.errors}</span>}
           {
             titleData !== null && (
               <div className="flex gap-5 mt-10 p-5 shadow-xl rounded-lg">
