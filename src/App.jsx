@@ -26,7 +26,7 @@ function App() {
       return
     }
 
-    axios.post('https://1f364713b20c.ngrok-free.app/predict-news-link', {input: url.input}, {
+    axios.post('https://05434b35e73c.ngrok-free.app/predict-news-link', {input: url.input}, {
       headers: {
         "Content-Type": 'application/json',
         Accept: 'application/json',
@@ -44,7 +44,7 @@ function App() {
       return
     }
     
-    axios.post('https://1f364713b20c.ngrok-free.app/predict-news-title', {input: title.input}, {
+    axios.post('https://05434b35e73c.ngrok-free.app/predict-news-title', {input: title.input}, {
       headers: {
         "Content-Type": 'application/json',
         Accept: 'application/json',
