@@ -29,6 +29,7 @@ function App() {
     setLinkData(null)
     if (!url.input) {
       setUrl({...url, errors: 'Please enter a link'})
+      setLoading({...loading, link: false})
       return
     }
 
@@ -50,6 +51,7 @@ function App() {
     setTitleData(null)
     if (!title.input) {
       setTitle({...title, errors: 'Please enter a news title'})
+      setLoading({...loading, title: false})
       return
     }
     
