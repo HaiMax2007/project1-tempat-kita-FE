@@ -40,7 +40,7 @@ function App() {
     })
       .then(res => setLinkData(res.data.prediction))
       .catch(err => setError({...error, link: err.response.data.detail}))
-      .finally(() => setLoading({...loading, link: true}))
+      .finally(() => setLoading({...loading, link: false}))
   }
   
   const handleTitle = () => {
@@ -61,7 +61,7 @@ function App() {
     })
       .then(res => setTitleData(res.data.prediction))
       .catch(err => setError({...error, title: err.response.data.detail}))
-      .finally(() => setLoading({...loading, title: true}))
+      .finally(() => setLoading({...loading, title: false}))
   }
 
   return (
