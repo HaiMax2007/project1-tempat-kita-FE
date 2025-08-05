@@ -17,8 +17,13 @@ function App() {
     link: null,
     title: null
   })
+  const [loading, setLoading] = useState({
+    link: false,
+    title: false,
+  })
 
   const handleLink = () => {
+    setLoading({...loading, link: true})
     setUrl({...url, errors: ''})
     setError({...error, link: null})
     setLinkData(null)
@@ -35,9 +40,11 @@ function App() {
     })
       .then(res => setLinkData(res.data.prediction))
       .catch(err => setError({...error, link: err.response.data.detail}))
+      .finally(() => setLoading({...loading, link: true}))
   }
   
   const handleTitle = () => {
+    setLoading({...loading, title: true})
     setTitle({...title, errors: ''})
     setError({...error, title: null})
     setTitleData(null)
@@ -54,6 +61,7 @@ function App() {
     })
       .then(res => setTitleData(res.data.prediction))
       .catch(err => setError({...error, title: err.response.data.detail}))
+      .finally(() => setLoading({...loading, title: true}))
   }
 
   return (
@@ -94,6 +102,7 @@ function App() {
           </div>
           {error.link && <span className='text-red-500'>{error.link}</span>}
           {url.errors && <span className='text-red-500'>{url.errors}</span>}
+          {loading.link && <span className='text-purple-700'>Predicting News by link . . .</span>}
           {
             linkData !== null && (
               <div className="flex gap-5 mt-10 p-5 shadow-xl rounded-lg">
@@ -138,6 +147,7 @@ function App() {
           </div>
           {error.title && <span className='text-red-500 text-lg'>{error.title}</span>}
           {title.errors && <span className='text-red-500'>{title.errors}</span>}
+          {loading.title && <span className='text-purple-700'>Predicting News by title . . .</span>}
           {
             titleData !== null && (
               <div className="flex gap-5 mt-10 p-5 shadow-xl rounded-lg">
